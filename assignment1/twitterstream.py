@@ -1,12 +1,17 @@
 import oauth2 as oauth
 import urllib2 as urllib
+import ConfigParser as configparser
+import os
+
+config = configparser.RawConfigParser()
+config.read(os.path.join(os.path.dirname(__file__), 'api_cred.ini'))
 
 # See assignment1.html instructions or README for how to get these credentials
 
-api_key = "<Enter api key>"
-api_secret = "<Enter api secret>"
-access_token_key = "<Enter your access token key here>"
-access_token_secret = "<Enter your access token secret here>"
+api_key = config.get('main', 'api_key')
+api_secret = config.get('main', 'api_secret')
+access_token_key = config.get('main', 'access_token_key')
+access_token_secret = config.get('main', 'access_token_secret')
 
 _debug = 0
 
