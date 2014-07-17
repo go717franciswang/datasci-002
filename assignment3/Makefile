@@ -1,4 +1,4 @@
-.PHONY: wordcount, inverted_index, join
+.PHONY: wordcount inverted_index join friend_count
 
 wordcount: 
 	python wordcount.py data/books.json | diff - solutions/wordcount.json
@@ -8,3 +8,6 @@ inverted_index:
 
 join:
 	python join.py data/records.json | diff - solutions/join.json | head
+
+friend_count:
+	python friend_count.py data/friends.json | diff - solutions/friend_count.json | head
