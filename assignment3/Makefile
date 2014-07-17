@@ -1,4 +1,6 @@
-.PHONY: wordcount inverted_index join friend_count
+SHELL=/bin/bash
+
+.PHONY: wordcount inverted_index join friend_count asymmetric_friendships
 
 wordcount: 
 	python wordcount.py data/books.json | diff - solutions/wordcount.json
@@ -11,3 +13,8 @@ join:
 
 friend_count:
 	python friend_count.py data/friends.json | diff - solutions/friend_count.json | head
+
+asymmetric_friendships:
+	comm -13 \
+		<(python asymmetric_friendships.py data/friends.json | sort) \
+		<(sort solutions/asymmetric_friendships.json)
